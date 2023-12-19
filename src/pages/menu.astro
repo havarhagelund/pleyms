@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import MenuItem from '../components/MenuItem.astro'
+---
+
+<Layout title="About us">
+    <div class="bg-zinc-800 text-white sm:p-10 min-h-fit w-screen flex flex-col justify-between">
+        <div class="md:w-1/2">
+            <div class="p-5 w-screen h-auto">
+                <a href="/" class="text-3xl sm:text-5xl text-white font-restoration">PLEYMS<br>PIZZA<br>BALCONY</a>
+            </div>
+            <div class="px-5 pt-5">
+                <h3 class="font-pinewood text-white text-xl">Antipasti</h3>
+                <MenuItem item="Caprese" contents="Mozerella, tomato, basil"/>
+                <MenuItem item="Insalata di ruccola" contents="Ruccula, pecorino, balsamico"/>
+                <MenuItem item="Casio e pepe" contents="Pasta, pecorino, pepe"/>
+                <br>
+
+                <h3 class="font-pinewood text-white text-xl">Pizza</h3>
+                <MenuItem item="Margherita" contents="Mozerella, tomato, basil"/>
+                <MenuItem item="Salsicca" contents="Mozerella, tomato, salsicca"/>
+                <MenuItem item="Diavola" contents="Mozerella, tomato, salami, nduja"/>
+                <MenuItem item="Pollo pesto" contents="Mozerella, pesto, pollo, pinolo"/>
+                <MenuItem item="Principessa" contents="Mozerella, mascapone, olivio, spekk, ruccola, pecorino"/>
+                <MenuItem item="Quattro Formaggi" contents="Mozerella, ..."/>
+                <br>
+
+                <h3 class="font-pinewood text-white text-xl">Beveraggio</h3>
+                <MenuItem item="Aqua"/>
+                <MenuItem item="PasjonFruit Guava"/>
+                <MenuItem item="San Pellegrino"/>
+                <br>
+
+                <h3 class="font-pinewood text-white text-xl">Dolce</h3>
+                <MenuItem item="Gelato"/>
+                <MenuItem item="Panna cotta"/>
+                <MenuItem item="Tiramisu"/>
+                <br>
+
+                <h3 class="font-pinewood text-white text-xl">Beveraggio a dolce</h3>
+                <MenuItem item="Espresso"/>
+
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <Nav/>
+    </div>
+</Layout>

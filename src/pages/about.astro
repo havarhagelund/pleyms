@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+---
+
+<Layout title="About us">
+    <div class="bg-zinc-800 text-white min-h-screen w-screen flex flex-col justify-between">
+        <div class="sm:flex sm:flex-row ">
+            <div style="background-image: url('/images/pleym.jpg');" class="p-5 sm:p-10 min-w-fit w-96 h-screen bg-no-repeat bg-cover bg-top flex flex-col justify-between">
+                <a href="/" class="text-6xl sm:text-7xl text-white font-restoration">PLEYMS<br>PIZZA<br>BALCONY</a>
+                <div class="hidden sm:block">
+                    <Nav/>
+                </div>
+            </div>
+            <div class="p-5 w-96 sm:p-12">
+                <p>I midten av mai 2023 ble Pleyms Pizza Balcony etablert takket være en tur til Obs BYGG Tiller som resulterte i fullstendig overtenning. Mange 1000-lapper senere har Pleyms Pizza Balcony blitt til en av byens beste steder å nyte god neapolitan pizza og middels god utsikt.</p>
+                <p>(Siden vi ikke tar betalt for serveringen settes økonomiske bidrag stor pris på)</p>
+                <br>
+                <p>Tusen takk til sponsorene Håvar og Trygve for pizzaspade og pizzakutter.</p>
+                <br>
+                <p>Vi forbeholder oss retten til ikke å servere alle produktene på menyen til alle kunder.</p>
+                <br>
+                <div class="sm:hidden">
+                    <Nav/>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>

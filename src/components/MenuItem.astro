@@ -1,0 +1,6 @@
+---
+const {item, contents} = Astro.props
+---
+<div class="font-pinewood text-white text-base p-2">
+	{item} {contents && <i class="text-zinc-500">({contents})</i>}
+</div>
