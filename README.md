@@ -1,6 +1,8 @@
 # Playms pizza, gelato and more
 
-Simple landing page as a joke in our friend circle.
+One of my good friends likes to always invite people over for dinner, after he also bought a pizza oven, the joke about the Pleyms resteurant was born.
+
+This project is first and foremost an internal joke in our friend group, but also a fun way to play around with Astro.
 
 
 ## Commands
