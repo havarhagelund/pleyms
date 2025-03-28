@@ -6,7 +6,18 @@ export default {
 			fontFamily: {
 				restoration: 'Restoration, serif',
 				pinewood: 'Pinewood, sans-serif',
-			}
+			},
+			keyframes: {
+				wave: {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-20px)' },
+				},
+			},
+			animation: {
+				'wave-slow': 'wave 12s ease-in-out infinite',
+				'wave-medium': 'wave 10s ease-in-out infinite',
+				'wave-fast': 'wave 8s ease-in-out infinite',
+			},
 		},
 	},
 	plugins: [],
