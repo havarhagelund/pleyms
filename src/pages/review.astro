@@ -216,27 +216,47 @@ if (error) {
 				submitButton.textContent = 'Submitting...';
 			}
 
-			const { error } = await fetch('/api/reviews', {
+			const response = await fetch('/api/reviews', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify(reviewData),
-			}).then(res => res.json());
+			});
+
+			const data = await response.json();
 			
-			if (error) throw error;
+			if (!response.ok) {
+				throw new Error(data.error || 'Failed to submit review');
+			}
 			
-			// Close the dialog
+			// Close the dialog first
 			dialog?.close();
 			
-			// Show a success message
-			alert('Thank you for your review!');
+			// Show success message in the UI
+			const successMessage = document.createElement('div');
+			successMessage.className = 'fixed bottom-4 right-4 bg-green-600 text-white px-6 py-3 rounded-md shadow-lg z-50';
+			successMessage.textContent = 'Thank you for your review!';
+			document.body.appendChild(successMessage);
 			
-			// Redirect to the home page
-			window.location.href = '/';
+			// Remove the message after 3 seconds
+			setTimeout(() => {
+				successMessage.remove();
+			}, 3000);
+			
+			// Reload the page to show the new review
+			window.location.reload();
 		} catch (error) {
 			console.error('Error submitting review:', error);
-			alert('There was an error submitting your review. Please try again.');
+			const errorMessage = document.createElement('div');
+			errorMessage.className = 'fixed bottom-4 right-4 bg-red-600 text-white px-6 py-3 rounded-md shadow-lg z-50';
+			errorMessage.textContent = 'There was an error submitting your review. Please try again.';
+			document.body.appendChild(errorMessage);
+			
+			// Remove the message after 3 seconds
+			setTimeout(() => {
+				errorMessage.remove();
+			}, 3000);
 		} finally {
 			const submitButton = (e.target as HTMLFormElement).querySelector('button[type="submit"]') as HTMLButtonElement;
 			if (submitButton) {
