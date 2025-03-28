@@ -16,6 +16,7 @@ const { data: reviews, error } = await supabase
 	.from('reviews')
 	.select('*')
 	.order('created_at', { ascending: false });
+console.log(reviews);
 
 // Calculate average rating
 const averageRating = reviews?.length 
