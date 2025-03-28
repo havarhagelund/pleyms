@@ -17,6 +17,11 @@ const { data: reviews, error } = await supabase
 	.select('*')
 	.order('created_at', { ascending: false });
 
+// Calculate average rating
+const averageRating = reviews?.length 
+	? Math.round((reviews.reduce((acc, review) => acc + review.rating, 0) / reviews.length) * 10) / 10
+	: 0;
+
 console.log(reviews);
 
 if (error) {
@@ -33,6 +38,23 @@ if (error) {
 				</div>
 				<div class="text-center mb-8">
 					<h3 class="font-pinewood text-white text-xl">Customer Reviews</h3>
+					<div class="mt-4">
+						<div class="flex justify-center items-center gap-2">
+							<div class="flex">
+								{Array.from({ length: Math.floor(averageRating) }).map(() => (
+									<span class="text-2xl">🍕</span>
+								))}
+								{averageRating % 1 !== 0 && (
+									<span class="text-2xl">½</span>
+								)}
+								{Array.from({ length: 5 - Math.ceil(averageRating) }).map(() => (
+									<span class="text-2xl opacity-30">🍕</span>
+								))}
+							</div>
+							<span class="text-lg font-medium">({averageRating.toFixed(1)})</span>
+						</div>
+						<p class="text-sm text-gray-400 mt-2">Based on {reviews?.length || 0} reviews</p>
+					</div>
 				</div>
 				
 				<!-- Reviews Display Section -->
