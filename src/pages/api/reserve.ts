@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { sendReservationEmail } from '../../lib/email';
 
 export const POST: APIRoute = async ({ request }) => {
     try {
@@ -16,11 +17,20 @@ export const POST: APIRoute = async ({ request }) => {
             });
         }
 
-        // Log the reservation (you can replace this with email/database later)
-        console.log('Ny reservasjon:', {
-            ...data,
-            timestamp: new Date().toISOString()
-        });
+        // Send email notification
+        const emailSent = await sendReservationEmail(data);
+        
+        if (!emailSent) {
+            console.error('Failed to send email notification');
+            return new Response(JSON.stringify({
+                message: 'Reservasjon mottatt, men det oppstod en feil ved sending av e-post. Vi tar kontakt snart.'
+            }), {
+                status: 200,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        }
         
         return new Response(JSON.stringify({
             message: 'Reservasjon mottatt! Vi tar kontakt snart.'
