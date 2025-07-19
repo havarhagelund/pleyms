@@ -1,0 +1,9 @@
+{
+    "cron": [
+      {
+        "path": "/api/ping",
+        "schedule": "0 */12 * * *"
+      }
+    ]
+  }
+  
