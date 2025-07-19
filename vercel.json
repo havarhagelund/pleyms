@@ -1,5 +1,5 @@
 {
-  "cronJobs": [
+  "crons": [
     {
       "path": "/api/ping",
       "schedule": "0 */12 * * *"
