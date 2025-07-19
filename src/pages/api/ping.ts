@@ -7,6 +7,7 @@ export const GET = async () => {
       console.error("Failed to ping Supabase", error);
       return new Response("Ping failed", { status: 500 });
     }
+    console.log(reviews);
     return new Response("Supabase pinged", { status: 200 });
   };
   
